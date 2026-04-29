@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dqcehcdwv22wt" path="res://player.gd" id="1_glpr6"]
 [ext_resource type="PackedScene" uid="uid://clsvuqe3axmr" path="res://simple_gun/gun_model.glb" id="2_pjt0s"]
+[ext_resource type="PackedScene" uid="uid://b0k53xmi3jdvf" path="res://bullet_3d.tscn" id="3_wa5vi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vu45j"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -47,3 +48,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5970483, 0)
 
 [node name="gun_model" parent="CharacterBody3D/Neck/Camera3D" unique_id=1752154158 instance=ExtResource("2_pjt0s")]
 transform = Transform3D(-0.75328743, 0, 0.02015974, 0, 0.75355715, 0, -0.02015974, 0, -0.75328743, 0.7969867, -0.37999976, -0.9564758)
+
+[node name="Marker3D" type="Marker3D" parent="CharacterBody3D/Neck/Camera3D" unique_id=45284053]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.79980487, -0.31366038, -1.6987842)
+
+[node name="bullet3d" parent="CharacterBody3D/Neck/Camera3D/Marker3D" unique_id=1342251384 instance=ExtResource("3_wa5vi")]
+transform = Transform3D(0.001221753, 0, 0.4999985, 0, 0.5, 0, -0.4999985, 0, 0.001221753, 0.8079138, 1.1961573, -1.426637)

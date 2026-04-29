@@ -39,3 +39,8 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+
+func shoot_bullet():
+	const BULLET_3D = preload("res://bullet_3d.tscn")
+	var new_bullet = BULLET_3D.instantiate()
+	
