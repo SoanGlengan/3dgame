@@ -17,6 +17,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			neck.rotate_y(-event.relative.x * 0.001)
 			camera.rotate_x(-event.relative.y * 0.001)
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-30), deg_to_rad(60))
+	if Input.is_action_just_pressed("shoot"):
+		shoot_bullet()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -43,4 +45,5 @@ func _physics_process(delta: float) -> void:
 func shoot_bullet():
 	const BULLET_3D = preload("res://bullet_3d.tscn")
 	var new_bullet = BULLET_3D.instantiate()
+	add_child(new_bullet)
 	
