@@ -45,5 +45,7 @@ func _physics_process(delta: float) -> void:
 func shoot_bullet():
 	const BULLET_3D = preload("res://bullet_3d.tscn")
 	var new_bullet = BULLET_3D.instantiate()
+	new_bullet.position = $Neck/Camera3D/Marker3D.global_position
+	new_bullet.rotation = $Neck/Camera3D/Marker3D.global_rotation
 	add_child(new_bullet)
 	
