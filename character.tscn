@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dqcehcdwv22wt" path="res://player.gd" id="1_glpr6"]
 [ext_resource type="PackedScene" uid="uid://clsvuqe3axmr" path="res://simple_gun/gun_model.glb" id="2_pjt0s"]
-[ext_resource type="Script" uid="uid://dtj7gmna11qhg" path="res://reticle.gd" id="3_wa5vi"]
+[ext_resource type="Script" path="res://reticle.gd" id="3_wa5vi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vu45j"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)

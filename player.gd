@@ -3,9 +3,14 @@ extends CharacterBody3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
+var timeSinceLastShoot = 0
 
 @onready var neck := $Neck
 @onready var camera := $Neck/Camera3D
+
+func _process(delta: float) -> void:
+	timeSinceLastShoot += 1 
+	
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -16,14 +21,16 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event is InputEventMouseMotion:
 			neck.rotate_y(-event.relative.x * 0.001)
 			camera.rotate_x(-event.relative.y * 0.001)
-			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-30), deg_to_rad(60))
-	if Input.is_action_just_pressed("shoot"):
+			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(90))
+	if Input.is_action_pressed("shoot") and timeSinceLastShoot > 15:
 		shoot_bullet()
-
+		timeSinceLastShoot = 0
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+	
+		
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
@@ -39,8 +46,10 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+	
 
 	move_and_slide()
+	
 
 func shoot_bullet():
 	const BULLET_3D = preload("res://bullet_3d.tscn")

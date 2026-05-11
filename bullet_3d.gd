@@ -11,3 +11,6 @@ func _physics_process(delta):
 	travelledDistance += SPEED * delta
 	if travelledDistance > RANGE:
 		queue_free()	
+
+func _on_body_entered(body: Node3D) -> void:
+	queue_free()
