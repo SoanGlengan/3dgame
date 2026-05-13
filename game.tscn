@@ -1,7 +1,14 @@
 [gd_scene format=3 uid="uid://uerkgwaxa1ei"]
 
 [ext_resource type="PackedScene" uid="uid://b0gwny3ohfud8" path="res://character.tscn" id="1_80nbo"]
-[ext_resource type="Script" path="res://game.gd" id="1_e2o6t"]
+[ext_resource type="Script" uid="uid://m75rq42drvdj" path="res://game.gd" id="1_e2o6t"]
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_e2o6t"]
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
+diffuse_mode = 3
+specular_mode = 1
 
 [node name="game" type="Node3D" unique_id=1551873215]
 script = ExtResource("1_e2o6t")
@@ -30,3 +37,4 @@ use_collision = true
 radius = 1.5
 height = 1.0
 sides = 64
+material = SubResource("ORMMaterial3D_e2o6t")
