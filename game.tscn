@@ -3,32 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://b0gwny3ohfud8" path="res://character.tscn" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://m75rq42drvdj" path="res://game.gd" id="1_e2o6t"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_80nbo"]
-render_priority = 1
-transparency = 1
-shading_mode = 0
-albedo_color = Color(0, 0, 0, 1)
-grow = true
-grow_amount = 0.026
-stencil_mode = 3
-stencil_flags = 1
-stencil_compare = 5
-metadata/_stencil_owned = true
-
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_e2o6t"]
-next_pass = SubResource("StandardMaterial3D_80nbo")
-stencil_mode = 1
-stencil_flags = 2
-stencil_outline_thickness = 0.026
-
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_80nbo"]
-albedo_color = Color(0, 0.4153108, 0.35860685, 1)
-emission_enabled = true
-emission_energy_multiplier = 33.85
-stencil_flags = 2
-stencil_reference = 5
-stencil_outline_thickness = 0.0
-
 [node name="game" type="Node3D" unique_id=1551873215]
 script = ExtResource("1_e2o6t")
 
