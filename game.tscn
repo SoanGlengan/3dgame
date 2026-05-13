@@ -24,7 +24,6 @@ stencil_outline_thickness = 0.026
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_80nbo"]
 albedo_color = Color(0, 0.4153108, 0.35860685, 1)
 emission_enabled = true
-emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 33.85
 stencil_flags = 2
 stencil_reference = 5
