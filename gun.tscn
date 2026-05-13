@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bcauklsgbe0yn"]
+
+[ext_resource type="PackedScene" uid="uid://clsvuqe3axmr" path="res://simple_gun/gun_model.glb" id="1_dk5gl"]
+[ext_resource type="Material" uid="uid://bb43ngplsfis2" path="res://addons/flexible_toon_shader/FlexibleToonMaterial.tres" id="2_kw0bs"]
+
+[node name="gun_model" unique_id=877666652 instance=ExtResource("1_dk5gl")]
+
+[node name="BlueGun" parent="." index="0" unique_id=1621586176]
+surface_material_override/0 = ExtResource("2_kw0bs")

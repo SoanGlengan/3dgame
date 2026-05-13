@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dqcehcdwv22wt" path="res://player.gd" id="1_glpr6"]
 [ext_resource type="PackedScene" uid="uid://clsvuqe3axmr" path="res://simple_gun/gun_model.glb" id="2_pjt0s"]
-[ext_resource type="Script" path="res://reticle.gd" id="3_wa5vi"]
+[ext_resource type="Material" uid="uid://bb43ngplsfis2" path="res://addons/flexible_toon_shader/FlexibleToonMaterial.tres" id="2_wfnr8"]
+[ext_resource type="Script" uid="uid://dtj7gmna11qhg" path="res://reticle.gd" id="3_wa5vi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vu45j"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -37,6 +38,7 @@ script = ExtResource("1_glpr6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=1739914846]
 mesh = SubResource("CapsuleMesh_vu45j")
+surface_material_override/0 = ExtResource("2_wfnr8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1747280420]
 shape = SubResource("ConvexPolygonShape3D_glpr6")
@@ -47,7 +49,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5970483, 0)
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Neck" unique_id=1551503859]
 
 [node name="gun_model" parent="CharacterBody3D/Neck/Camera3D" unique_id=1752154158 instance=ExtResource("2_pjt0s")]
-transform = Transform3D(-0.75328743, 0, 0.02015974, 0, 0.75355715, 0, -0.02015974, 0, -0.75328743, 0.7969867, -0.37999976, -0.9564758)
+transform = Transform3D(-0.49982104, 0, 0.013376384, 0, 0.5, 0, -0.013376384, 0, -0.49982104, 0.7969867, -0.37999976, -0.9564758)
 
 [node name="Marker3D" type="Marker3D" parent="CharacterBody3D/Neck/Camera3D" unique_id=45284053]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -1)
