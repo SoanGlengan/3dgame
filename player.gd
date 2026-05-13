@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-
+var ammo = 16
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 var timeSinceLastShoot = 0
@@ -57,4 +57,5 @@ func shoot_bullet():
 	new_bullet.position = $Neck/Camera3D/Marker3D.global_position
 	new_bullet.rotation = $Neck/Camera3D/Marker3D.global_rotation
 	add_child(new_bullet)
+	ammo -= 1
 	
