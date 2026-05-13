@@ -18,7 +18,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.744272, 0, 5.0411386)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5720396, 1.0136298, -11.2617855)
 use_collision = true
 size = Vector3(4, 2, 0.1)
-material = SubResource("ORMMaterial3D_e2o6t")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1657977917]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.692652, 0.99804837, 2.8023963)
@@ -31,4 +30,3 @@ use_collision = true
 radius = 1.5
 height = 1.0
 sides = 64
-material = SubResource("ORMMaterial3D_80nbo")
