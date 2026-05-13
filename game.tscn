@@ -1,10 +1,41 @@
 [gd_scene format=3 uid="uid://uerkgwaxa1ei"]
 
 [ext_resource type="PackedScene" uid="uid://b0gwny3ohfud8" path="res://character.tscn" id="1_80nbo"]
-[ext_resource type="Script" uid="uid://m75rq42drvdj" path="res://game.gd" id="1_e2o6t"]
+
+[sub_resource type="GDScript" id="GDScript_80nbo"]
+script/source = "extends Node3D
+
+@onready var main_menu = $CanvasLayer/MainMenu
+@onready var address_entry = $CanvasLayer/MainMenu/MarginContainer/VBoxContainer/AddressEntry
+
+const Player = preload(\"res://character.tscn\")
+const PORT = 69420
+var enet_peer = ENetMultiplayerPeer.new()
+
+func _on_host_button_pressed() -> void:
+	main_menu.hide()
+	
+	enet_peer.create_server(PORT)
+	multiplayer.multiplayer_peer = enet_peer
+	multiplayer.peer_conected.connect(add_player)
+	
+	add_player(multiplayer.get_unique_id())
+	
+	
+func _on_join_button_pressed() -> void:
+	main_menu.hide()
+	
+	enet_peer.create_client(\"localhost\", PORT)
+	multiplayer.multiplayer_peer = enet_peer
+
+func add_player(peer_id):
+	var player = Player.instantiate()
+	player.name = str(peer_id)
+	add_child(player)
+"
 
 [node name="game" type="Node3D" unique_id=1551873215]
-script = ExtResource("1_e2o6t")
+script = SubResource("GDScript_80nbo")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=2101766571]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.989571, -0.0005002022, -4.0470057)
@@ -27,42 +58,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6546223, 0.48084593, -2.55
 radius = 1.5
 height = 1.0
 sides = 64
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2051602868]
-
-[node name="MainMenu" type="PanelContainer" parent="CanvasLayer" unique_id=696198466]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 444.0
-offset_top = 244.0
-offset_right = -444.0
-offset_bottom = -244.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MainMenu" unique_id=1774181192]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainMenu/MarginContainer" unique_id=1927689551]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer" unique_id=562264613]
-layout_mode = 2
-text = "Main Menu"
-
-[node name="HostButton" type="Button" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer" unique_id=1601019957]
-layout_mode = 2
-text = "Host"
-
-[node name="JoinButton" type="Button" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer" unique_id=1287801766]
-layout_mode = 2
-text = "Join"
-
-[node name="AddressEntry" type="LineEdit" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer" unique_id=1525482230]
-layout_mode = 2
-placeholder_text = "Enter Address to Join Here"
-alignment = 1
-
-[connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
