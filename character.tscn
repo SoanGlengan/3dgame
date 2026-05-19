@@ -2,9 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dqcehcdwv22wt" path="res://player.gd" id="1_glpr6"]
 [ext_resource type="Texture2D" uid="uid://cqrn3fee31hq" path="res://simple_gun/gun_model_gun_palette.png" id="2_px5sl"]
-[ext_resource type="Material" uid="uid://bb43ngplsfis2" path="res://addons/flexible_toon_shader/FlexibleToonMaterial.tres" id="2_wfnr8"]
 [ext_resource type="Script" uid="uid://dtj7gmna11qhg" path="res://reticle.gd" id="3_wa5vi"]
-[ext_resource type="Script" uid="uid://hf1l2ukqgx8u" path="res://label.gd" id="5_px5sl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vu45j"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -64,6 +62,14 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ycvb1")
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_wa5vi"]
+properties/0/path = NodePath("CharacterBody3D:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("CharacterBody3D:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
 [node name="Node3D" type="Node3D" unique_id=2109709649]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2080682065]
@@ -92,7 +98,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5970483, 0)
 transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 0.797, -0.529093, -0.87924564)
 mesh = SubResource("ArrayMesh_0qfo5")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("2_wfnr8")
 
 [node name="Marker3D" type="Marker3D" parent="CharacterBody3D/Neck/Camera3D" unique_id=45284053]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -1)
@@ -120,11 +125,5 @@ grow_vertical = 2
 script = ExtResource("3_wa5vi")
 DOT_RADIUS = 3.0
 
-[node name="Label" type="Label" parent="CharacterBody3D/Neck/Camera3D/UserInterface" unique_id=2140956944]
-layout_mode = 0
-offset_left = 542.0
-offset_top = 353.0
-offset_right = 582.0
-offset_bottom = 376.0
-text = "16"
-script = ExtResource("5_px5sl")
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1758814849]
+replication_config = SubResource("SceneReplicationConfig_wa5vi")

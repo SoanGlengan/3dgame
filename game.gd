@@ -1,29 +1,34 @@
 extends Node3D
 
-@onready var main_menu = $CanvasLayer/MainMenu
-@onready var address_entry = $CanvasLayer/MainMenu/MarginContainer/VBoxContainer/AddressEntry
+var port = 1050
+var peer = ENetMultiplayerPeer.new()
+@export var player_scene : PackedScene
 
-const Player = preload("res://character.tscn")
-const PORT = 69420
-var enet_peer = ENetMultiplayerPeer.new()
+func _on_host_pressed() -> void:
+	peer.create_server(port)
+	multiplayer.multiplayer_peer = peer
+	multiplayer.peer_connected.connect(add_player)
+	add_player()
+	$CanvasLayer.hide()
 
-func _on_host_button_pressed() -> void:
-	main_menu.hide()
+func _on_join_pressed() -> void:
+	peer.create_client("127.0.0.1",port)
+	multiplayer.multiplayer_peer = peer
+	$CanvasLayer.hide()
 	
-	enet_peer.create_server(PORT)
-	multiplayer.multiplayer_peer = enet_peer
-	multiplayer.peer_conected.connect(add_player)
+func add_player(id = 1):
+	var player = player_scene.instantiate()
+	player.name = str(id)
+	call_deferred("add_child",player)
 	
-	add_player(multiplayer.get_unique_id())
-	
-	
-func _on_join_button_pressed() -> void:
-	main_menu.hide()
-	
-	enet_peer.create_client("localhost", PORT)
-	multiplayer.multiplayer_peer = enet_peer
+func exit_game(id):
+	multiplayer.peer_disconnected.connect(del_player)
+	del_player(id)
 
-func add_player(peer_id):
-	var player = Player.instantiate()
-	player.name = str(peer_id)
-	add_child(player)
+func del_player(id):
+	rpc("_del_player",id)
+
+@rpc("any_peer","call_local")
+
+func _del_player(id):
+	get_node(str(id)).queue_free()
