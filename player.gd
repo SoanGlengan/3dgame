@@ -21,21 +21,22 @@ func _process(delta: float) -> void:
 	
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	elif event.is_action_pressed("ui_cancel"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		if event is InputEventMouseMotion:
-			neck.rotate_y(-event.relative.x * 0.001)
-			camera.rotate_x(-event.relative.y * 0.001)
-			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(90))
-	if Input.is_action_pressed("shoot") and timeSinceLastShoot > 15:
-		shoot_bullet()
-		timeSinceLastShoot = 0
-	if Input.is_action_just_pressed("exit"):
-		$".../".exit_game(name.to_int())
-		get_tree().quit()
+	if is_multiplayer_authority():
+		if event is InputEventMouseButton:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		elif event.is_action_pressed("ui_cancel"):
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+			if event is InputEventMouseMotion:
+				neck.rotate_y(-event.relative.x * 0.001)
+				camera.rotate_x(-event.relative.y * 0.001)
+				camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(90))
+		if Input.is_action_pressed("shoot") and timeSinceLastShoot > 15:
+			shoot_bullet()
+			timeSinceLastShoot = 0
+		if Input.is_action_just_pressed("exit"):
+			$"../".exit_game(name.to_int())
+			get_tree().quit()
 func _physics_process(delta: float) -> void:
 	if is_multiplayer_authority():
 		if not is_on_floor():
@@ -60,8 +61,6 @@ func _physics_process(delta: float) -> void:
 		
 
 		move_and_slide()
-	else:
-		print("jdkfsldjflksj")
 	
 
 func shoot_bullet():

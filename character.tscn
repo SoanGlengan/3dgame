@@ -4,6 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://cqrn3fee31hq" path="res://simple_gun/gun_model_gun_palette.png" id="2_px5sl"]
 [ext_resource type="Script" uid="uid://dtj7gmna11qhg" path="res://reticle.gd" id="3_wa5vi"]
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_wa5vi"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Neck:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Neck/Camera3D:rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vu45j"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -62,47 +73,40 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ycvb1")
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_wa5vi"]
-properties/0/path = NodePath("CharacterBody3D:position")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-properties/1/path = NodePath("CharacterBody3D:rotation")
-properties/1/spawn = true
-properties/1/replication_mode = 1
-
-[node name="Node3D" type="Node3D" unique_id=2109709649]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2080682065]
-environment = SubResource("Environment_pjt0s")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1652891557]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-shadow_enabled = true
-
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=727059579]
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=942182750]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.937556, 0)
 script = ExtResource("1_glpr6")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=1739914846]
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1359776660]
+replication_config = SubResource("SceneReplicationConfig_wa5vi")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=623515509]
+environment = SubResource("Environment_pjt0s")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=292681645]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, -0.937556, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=417143608]
 mesh = SubResource("CapsuleMesh_vu45j")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1747280420]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1254103500]
 shape = SubResource("ConvexPolygonShape3D_glpr6")
 
-[node name="Neck" type="Node3D" parent="CharacterBody3D" unique_id=1186246332]
+[node name="Neck" type="Node3D" parent="." unique_id=1215534902]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5970483, 0)
 
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Neck" unique_id=1551503859]
+[node name="Camera3D" type="Camera3D" parent="Neck" unique_id=2118739851]
 
-[node name="BlueGun" type="MeshInstance3D" parent="CharacterBody3D/Neck/Camera3D" unique_id=1291120821]
+[node name="BlueGun" type="MeshInstance3D" parent="Neck/Camera3D" unique_id=556486903]
 transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 0.797, -0.529093, -0.87924564)
 mesh = SubResource("ArrayMesh_0qfo5")
 skeleton = NodePath("")
 
-[node name="Marker3D" type="Marker3D" parent="CharacterBody3D/Neck/Camera3D" unique_id=45284053]
+[node name="Marker3D" type="Marker3D" parent="Neck/Camera3D" unique_id=778950391]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -1)
 
-[node name="UserInterface" type="Control" parent="CharacterBody3D/Neck/Camera3D" unique_id=2126430423]
+[node name="UserInterface" type="Control" parent="Neck/Camera3D" unique_id=348642414]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -111,7 +115,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="reticle" type="CenterContainer" parent="CharacterBody3D/Neck/Camera3D/UserInterface" unique_id=1230171634]
+[node name="reticle" type="CenterContainer" parent="Neck/Camera3D/UserInterface" unique_id=966652964]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -124,6 +128,3 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_wa5vi")
 DOT_RADIUS = 3.0
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1758814849]
-replication_config = SubResource("SceneReplicationConfig_wa5vi")

@@ -4,22 +4,23 @@ var port = 1050
 var peer = ENetMultiplayerPeer.new()
 @export var player_scene : PackedScene
 
-func _on_host_pressed() -> void:
+func _on_host_pressed():
 	peer.create_server(port)
 	multiplayer.multiplayer_peer = peer
 	multiplayer.peer_connected.connect(add_player)
-	add_player()
+	add_player(1)
 	$CanvasLayer.hide()
 
-func _on_join_pressed() -> void:
+func _on_join_pressed():
 	peer.create_client("127.0.0.1",port)
 	multiplayer.multiplayer_peer = peer
 	$CanvasLayer.hide()
 	
-func add_player(id = 1):
+func add_player(id: int):
 	var player = player_scene.instantiate()
 	player.name = str(id)
-	call_deferred("add_child",player)
+	print("a player just joined the game and their id is:",player.name)
+	add_child.call_deferred(player, true)
 	
 func exit_game(id):
 	multiplayer.peer_disconnected.connect(del_player)
