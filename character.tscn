@@ -21,7 +21,7 @@ properties/2/replication_mode = 1
 render_priority = 1
 transparency = 1
 shading_mode = 0
-albedo_color = Color(0, 0, 0, 1)
+albedo_color = Color(1, 0, 0, 1)
 grow = true
 grow_amount = 0.057
 stencil_mode = 3
@@ -33,6 +33,7 @@ metadata/_stencil_owned = true
 next_pass = SubResource("StandardMaterial3D_wa5vi")
 stencil_mode = 1
 stencil_flags = 2
+stencil_color = Color(1, 0, 0, 1)
 stencil_outline_thickness = 0.057
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_glpr6"]
