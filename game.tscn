@@ -4,6 +4,14 @@
 [ext_resource type="Script" uid="uid://m75rq42drvdj" path="res://game.gd" id="1_e2o6t"]
 [ext_resource type="Material" uid="uid://bnpl36m17k8h7" path="res://addons/flexible_toon_shader/HatchToonMaterial.tres" id="3_feb5d"]
 
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_feb5d"]
+stencil_flags = 2
+stencil_outline_thickness = 0.053
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_7jktm"]
+stencil_flags = 2
+stencil_outline_thickness = 0.053
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_feb5d"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -16,15 +24,23 @@ background_mode = 2
 sky = SubResource("Sky_glpr6")
 tonemap_mode = 2
 
+[sub_resource type="BoxMesh" id="BoxMesh_feb5d"]
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_fc0e3"]
+albedo_color = Color(1, 0.43529412, 1, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_feb5d"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
 [node name="game" type="Node3D" unique_id=1551873215]
 script = ExtResource("1_e2o6t")
 player_scene = ExtResource("1_80nbo")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=2101766571]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.989571, -0.0005002022, -4.0470057)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.007957, -0.045157433, -4.056304)
 use_collision = true
 size = Vector3(24, 0.001, 24)
-material = ExtResource("3_feb5d")
+material = SubResource("ORMMaterial3D_feb5d")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=2112850469]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5720396, 1.0136298, -11.2617855)
@@ -33,7 +49,7 @@ size = Vector3(4, 2, 0.1)
 material = ExtResource("3_feb5d")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1657977917]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.692652, 0.99804837, 2.8023963)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.692652, 0.9488693, 2.8023963)
 use_collision = true
 size = Vector3(4, 2, 0.1)
 material = ExtResource("3_feb5d")
@@ -44,22 +60,23 @@ use_collision = true
 radius = 1.5
 height = 1.0
 sides = 64
-material = ExtResource("3_feb5d")
+material = SubResource("ORMMaterial3D_7jktm")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=142785919]
 
-[node name="host" type="Button" parent="CanvasLayer" unique_id=307661701]
-offset_left = 489.0
-offset_top = 273.0
-offset_right = 559.0
-offset_bottom = 314.0
+[node name="Host" type="Button" parent="CanvasLayer" unique_id=307661701]
+offset_left = 441.0
+offset_top = 302.0
+offset_right = 511.0
+offset_bottom = 343.0
+size_flags_horizontal = 8
 text = "Host"
 
-[node name="join" type="Button" parent="CanvasLayer" unique_id=310377934]
-offset_left = 623.0
-offset_top = 269.0
-offset_right = 694.0
-offset_bottom = 313.0
+[node name="Join" type="Button" parent="CanvasLayer" unique_id=310377934]
+offset_left = 684.0
+offset_top = 308.0
+offset_right = 755.0
+offset_bottom = 352.0
 text = "Join"
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=301305071]
@@ -74,5 +91,15 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=882756659]
 environment = SubResource("Environment_fc0e3")
 
-[connection signal="pressed" from="CanvasLayer/host" to="." method="_on_host_pressed"]
-[connection signal="pressed" from="CanvasLayer/join" to="." method="_on_join_pressed"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1200551858]
+transform = Transform3D(2.005, 0, 0, 0, 2.005, 0, 0, 0, 2.005, -4.754279, 0, 0.4429846)
+mesh = SubResource("BoxMesh_feb5d")
+surface_material_override/0 = SubResource("ORMMaterial3D_fc0e3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=202014796]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=1442133151]
+shape = SubResource("ConcavePolygonShape3D_feb5d")
+
+[connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="CanvasLayer/Join" to="." method="_on_join_pressed"]
