@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 var ammo = 16
-const SPEED = 5.0
+const SPEED = 6.0
 const JUMP_VELOCITY = 4.5
 var timeSinceLastShoot = 0
 var health = 100
@@ -56,7 +56,9 @@ func _physics_process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
 			
-		
+		if Input.is_key_pressed(KEY_R):
+			global_position = Vector3(0,1,0)
+	
 		if Input.is_action_pressed("shoot") and timeSinceLastShoot > 15:
 			shoot_bullet()
 			timeSinceLastShoot = 0

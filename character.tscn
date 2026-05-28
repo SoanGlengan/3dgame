@@ -73,6 +73,7 @@ metadata/_stencil_owned = true
 next_pass = SubResource("StandardMaterial3D_wa5vi")
 stencil_mode = 1
 stencil_flags = 2
+stencil_color = Color(1, 0, 0, 1)
 stencil_outline_thickness = 0.034
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_glpr6"]
@@ -115,6 +116,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_wa5vi")
 DOT_RADIUS = 3.0
+DOT_COLOR = Color(0, 0, 0, 1)
 
 [node name="ProgressBar" type="ProgressBar" parent="Camera3D/UserInterface" unique_id=1642095817]
 modulate = Color(1, 0.15134355, 0.10833212, 1)
@@ -125,7 +127,6 @@ offset_top = 605.0
 offset_right = 521.0
 offset_bottom = 632.0
 value = 4.8100000000000005
-show_percentage = false
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1359776660]
 replication_config = SubResource("SceneReplicationConfig_wa5vi")
@@ -136,5 +137,5 @@ surface_material_override/0 = SubResource("ORMMaterial3D_wfnr8")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=916943446]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1254103500]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1254103500]
 shape = SubResource("ConvexPolygonShape3D_glpr6")
