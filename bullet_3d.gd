@@ -13,4 +13,6 @@ func _physics_process(delta):
 		queue_free()	
 
 func _on_body_entered(body: Node3D) -> void:
+	if body == CollisionShape3D:
+		print("wow, i think i just collided with a player")
 	queue_free()
