@@ -61,7 +61,7 @@ properties/2/replication_mode = 1
 render_priority = 1
 transparency = 1
 shading_mode = 0
-albedo_color = Color(0, 0, 0, 1)
+albedo_color = Color(1, 0, 0, 1)
 grow = true
 grow_amount = 0.034
 stencil_mode = 3
@@ -127,6 +127,7 @@ offset_top = 605.0
 offset_right = 521.0
 offset_bottom = 632.0
 value = 4.8100000000000005
+show_percentage = false
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1359776660]
 replication_config = SubResource("SceneReplicationConfig_wa5vi")

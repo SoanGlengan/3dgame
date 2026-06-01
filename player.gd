@@ -19,6 +19,7 @@ func _ready():
 
 func _process(delta: float) -> void:
 	timeSinceLastShoot += 1 
+	$Camera3D/UserInterface/ProgressBar.value = health
 	
 
 func _unhandled_input(event: InputEvent) -> void:
