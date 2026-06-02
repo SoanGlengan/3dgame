@@ -8,6 +8,7 @@ var health = 100
 
 
 @onready var camera := $Camera3D
+@onready var name_tag: Label3D = $NameTag
 
 
 
@@ -16,6 +17,10 @@ func _enter_tree():
 	
 func _ready():
 	camera.current = is_multiplayer_authority()
+	set_character_name("Player_1")
+
+func set_character_name(new_name: String) -> void:
+	name_tag.text = new_name
 
 func _process(delta: float) -> void:
 	timeSinceLastShoot += 1 
@@ -78,4 +83,6 @@ func shoot_bullet():
 	new_bullet.rotation = $Camera3D/Marker3D.global_rotation
 	add_child(new_bullet)
 	ammo -= 1
+	
+
 	

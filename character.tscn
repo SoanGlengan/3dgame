@@ -140,3 +140,8 @@ surface_material_override/0 = SubResource("ORMMaterial3D_wfnr8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1254103500]
 shape = SubResource("ConvexPolygonShape3D_glpr6")
+
+[node name="NameTag" type="Label3D" parent="." unique_id=702529856]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2530882, 0)
+billboard = 2
+text = "NAME123"
