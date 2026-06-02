@@ -5,6 +5,7 @@ var peer = ENetMultiplayerPeer.new()
 @export var player_scene : PackedScene
 
 func _on_host_pressed():
+	port = $CanvasLayer/Port.text.to_int()
 	peer.create_server(port)
 	multiplayer.multiplayer_peer = peer
 	multiplayer.peer_connected.connect(add_player)
@@ -12,7 +13,8 @@ func _on_host_pressed():
 	$CanvasLayer.hide()
 
 func _on_join_pressed():
-	peer.create_client("10.176.47.18",port)
+	port = $CanvasLayer/Port.text.to_int()
+	peer.create_client("127.0.0.1",port)
 	multiplayer.multiplayer_peer = peer
 	$CanvasLayer.hide()
 	
