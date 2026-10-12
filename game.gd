@@ -1,20 +1,30 @@
 extends Node3D
 
+
+
 var port = 1050
 var peer = ENetMultiplayerPeer.new()
 @export var player_scene : PackedScene
 
 func _on_host_pressed():
 	port = $CanvasLayer/Port.text.to_int()
+	if port == 0:
+		print("no port specified, defaulting to port 1050")
+		port = 1050 
 	peer.create_server(port)
+	print("making a server on port: ", port)
 	multiplayer.multiplayer_peer = peer
 	multiplayer.peer_connected.connect(add_player)
 	add_player(1)
 	$CanvasLayer.hide()
-
+	
 func _on_join_pressed():
 	port = $CanvasLayer/Port.text.to_int()
+	if port == 0:
+		print("no port specified, defaulting to port 1050")
+		port = 1050 
 	peer.create_client("127.0.0.1",port)
+	print("joining a server on port: ", port)
 	multiplayer.multiplayer_peer = peer
 	$CanvasLayer.hide()
 	
@@ -35,3 +45,4 @@ func del_player(id):
 
 func _del_player(id):
 	get_node(str(id)).queue_free()
+	

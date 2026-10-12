@@ -6,9 +6,11 @@ const JUMP_VELOCITY = 4.5
 var timeSinceLastShoot = 0
 var health = 100
 
-
+@onready var playerName = $Camera3D/UserInterface/Name
 @onready var camera := $Camera3D
 @onready var name_tag: Label3D = $NameTag
+
+
 
 
 
@@ -17,14 +19,17 @@ func _enter_tree():
 	
 func _ready():
 	camera.current = is_multiplayer_authority()
-	set_character_name("Player_1")
+	print(name)
 
 func set_character_name(new_name: String) -> void:
-	name_tag.text = new_name
+	name_tag.set_text(new_name)
 
 func _process(delta: float) -> void:
 	timeSinceLastShoot += 1 
 	$Camera3D/UserInterface/ProgressBar.value = health
+	if name_tag.text != playerName.text && is_multiplayer_authority():
+		name_tag.set_text(playerName.text)
+		
 	
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -67,6 +72,7 @@ func _physics_process(delta: float) -> void:
 	
 		if Input.is_action_pressed("shoot") and timeSinceLastShoot > 15:
 			shoot_bullet()
+			shoot_bullet.rpc()
 			timeSinceLastShoot = 0
 		if Input.is_action_just_pressed("exit"):
 			$"../".exit_game(name.to_int())
@@ -75,7 +81,7 @@ func _physics_process(delta: float) -> void:
 
 		move_and_slide()
 	
-
+@rpc
 func shoot_bullet():
 	const BULLET_3D = preload("res://bullet_3d.tscn")
 	var new_bullet = BULLET_3D.instantiate()
@@ -86,3 +92,8 @@ func shoot_bullet():
 	
 
 	
+
+
+func _on_area_3d_area_entered(area: Area3D) -> void:
+	health -= 10
+	print(health)

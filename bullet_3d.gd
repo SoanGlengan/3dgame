@@ -1,6 +1,6 @@
 extends Area3D
 
-const SPEED = 30.0
+const SPEED = 200.0
 const RANGE = 70.0
 
 var travelledDistance = 0.0
