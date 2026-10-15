@@ -66,7 +66,7 @@ transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.0
 shape = SubResource("CapsuleShape3D_1ljip")
 
 [node name="Projectile" type="MeshInstance3D" parent="." unique_id=1704882408]
-transform = Transform3D(1.5695823e-08, 1, 0, -0.05, 3.1391647e-07, 0, 0, 0, 0.05, 0, 0, 0)
+transform = Transform3D(1.5695823e-08, 2, 0, -0.05, 6.2783295e-07, 0, 0, 0, 0.05, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_lr471")
 mesh = SubResource("ArrayMesh_opfmi")
 skeleton = NodePath("")

@@ -45,4 +45,8 @@ func del_player(id):
 
 func _del_player(id):
 	get_node(str(id)).queue_free()
+	peer.disconnect_peer(id,true)
+	#if is_multiplayer_authority():
+		#$CanvasLayer.show() 
+	
 	

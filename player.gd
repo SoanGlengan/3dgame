@@ -26,9 +26,13 @@ func set_character_name(new_name: String) -> void:
 
 func _process(delta: float) -> void:
 	timeSinceLastShoot += 1 
-	$Camera3D/UserInterface/ProgressBar.value = health
+	if is_multiplayer_authority(): $Camera3D/UserInterface/ProgressBar.value = health
+	
 	if name_tag.text != playerName.text && is_multiplayer_authority():
 		name_tag.set_text(playerName.text)
+	
+	if health <= 0 && is_multiplayer_authority():
+		$"../".exit_game(name.to_int())
 		
 	
 
@@ -77,6 +81,11 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("exit"):
 			$"../".exit_game(name.to_int())
 			get_tree().quit()
+		if velocity != Vector3(0,0,0):
+			$WalkParticles.emitting = true
+		else:
+			$WalkParticles.emitting = false
+				
 		
 
 		move_and_slide()
