@@ -139,6 +139,10 @@ skeleton = NodePath("")
 [node name="Marker3D" type="Marker3D" parent="Camera3D" unique_id=778950391]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -1)
 
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=2029318100]
+target_position = Vector3(0, 0, -100)
+collide_with_areas = true
+
 [node name="UserInterface" type="Control" parent="Camera3D" unique_id=348642414]
 layout_mode = 3
 anchors_preset = 15

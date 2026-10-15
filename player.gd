@@ -75,7 +75,6 @@ func _physics_process(delta: float) -> void:
 			global_position = Vector3(0,1,0)
 	
 		if Input.is_action_pressed("shoot") and timeSinceLastShoot > 15:
-			shoot_bullet()
 			shoot_bullet.rpc()
 			timeSinceLastShoot = 0
 		if Input.is_action_just_pressed("exit"):
@@ -90,19 +89,27 @@ func _physics_process(delta: float) -> void:
 
 		move_and_slide()
 	
-@rpc
+func recieve_damage(amount: int):
+	health -= amount
+	print("took damage current health: ", health)
+	
+	if health <= 0:
+		print("bro really died")
+		queue_free()
+		
+@rpc("any_peer", "call_local", "reliable")
 func shoot_bullet():
-	const BULLET_3D = preload("res://bullet_3d.tscn")
-	var new_bullet = BULLET_3D.instantiate()
-	new_bullet.position = $Camera3D/Marker3D.global_position
-	new_bullet.rotation = $Camera3D/Marker3D.global_rotation
-	add_child(new_bullet)
-	ammo -= 1
+	# Only the server handles hit registration to prevent cheating
+	if not multiplayer.is_server():
+		return
 	
+	$Camera3D/RayCast3D.force_raycast_update()
+	# Check if the center crosshair raycast hit an enemy
+	if $Camera3D/RayCast3D.is_colliding():
+		print("dofaj kjfk")
+		var target = $Camera3D/RayCast3D.get_collider()
+		if target is CharacterBody3D:
+			if target.has_method("recieve_damage"):
+				target.recieve_damage(10)
 
 	
-
-
-func _on_area_3d_area_entered(area: Area3D) -> void:
-	health -= 10
-	print(health)
