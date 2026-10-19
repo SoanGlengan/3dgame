@@ -104,12 +104,9 @@ func shoot_bullet():
 		return
 	
 	$Camera3D/RayCast3D.force_raycast_update()
+	print("shooting")
 	# Check if the center crosshair raycast hit an enemy
 	if $Camera3D/RayCast3D.is_colliding():
 		print("dofaj kjfk")
-		var target = $Camera3D/RayCast3D.get_collider()
-		if target is CharacterBody3D:
-			if target.has_method("recieve_damage"):
-				target.recieve_damage(10)
 
 	

@@ -68,4 +68,4 @@ exit={
 3d_render/layer_4="Arena"
 3d_physics/layer_1="Player"
 3d_physics/layer_2="Arena"
-3d_physics/layer_3="Bullet"
+3d_physics/layer_3="Raycast"
