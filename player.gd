@@ -1,3 +1,4 @@
+class_name Character
 extends CharacterBody3D
 
 var ammo = 16
@@ -18,6 +19,7 @@ func _enter_tree():
 	set_multiplayer_authority(name.to_int())
 	
 func _ready():
+	$Camera3D/RayCast3D.add_exception(self)
 	camera.current = is_multiplayer_authority()
 	print(name)
 
@@ -106,7 +108,8 @@ func shoot_bullet():
 	$Camera3D/RayCast3D.force_raycast_update()
 	print("shooting")
 	# Check if the center crosshair raycast hit an enemy
-	if $Camera3D/RayCast3D.is_colliding():
-		print("dofaj kjfk")
+	if $Camera3D/RayCast3D.is_colliding() and $Camera3D/RayCast3D.get_collider() is Character:
+		print("shooting and hitting player")
+		$Camera3D/RayCast3D.get_collider().recieve_damage(15)
 
 	
