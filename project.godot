@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Handler="*uid://bqh07uirc2l64"
+Server="*uid://byqok1q7opsfy"
 
 [editor_plugins]
 

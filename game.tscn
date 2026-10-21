@@ -1,8 +1,5 @@
 [gd_scene format=3 uid="uid://uerkgwaxa1ei"]
 
-[ext_resource type="PackedScene" uid="uid://b0gwny3ohfud8" path="res://character.tscn" id="1_80nbo"]
-[ext_resource type="Script" uid="uid://m75rq42drvdj" path="res://game.gd" id="1_e2o6t"]
-
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_feb5d"]
 stencil_flags = 2
 stencil_outline_thickness = 0.053
@@ -35,8 +32,6 @@ sky = SubResource("Sky_glpr6")
 tonemap_mode = 2
 
 [node name="game" type="Node3D" unique_id=1551873215]
-script = ExtResource("1_e2o6t")
-player_scene = ExtResource("1_80nbo")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=2101766571]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.007957, -0.045157433, -4.056304)
@@ -68,36 +63,6 @@ height = 1.0
 sides = 64
 material = SubResource("ORMMaterial3D_7jktm")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=142785919]
-
-[node name="Host" type="Button" parent="CanvasLayer" unique_id=307661701]
-offset_left = 441.0
-offset_top = 302.0
-offset_right = 511.0
-offset_bottom = 343.0
-size_flags_horizontal = 8
-text = "Host"
-
-[node name="Join" type="Button" parent="CanvasLayer" unique_id=310377934]
-offset_left = 684.0
-offset_top = 308.0
-offset_right = 755.0
-offset_bottom = 352.0
-text = "Join"
-
-[node name="Port" type="LineEdit" parent="CanvasLayer" unique_id=627202677]
-offset_left = 474.0
-offset_top = 396.0
-offset_right = 713.0
-offset_bottom = 427.0
-
-[node name="PortLabel" type="Label" parent="CanvasLayer" unique_id=1677539902]
-offset_left = 567.0
-offset_top = 368.0
-offset_right = 607.0
-offset_bottom = 391.0
-text = "Port:"
-
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=301305071]
 _spawnable_scenes = PackedStringArray("uid://b0gwny3ohfud8")
 spawn_path = NodePath("..")
@@ -109,6 +74,3 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=882756659]
 environment = SubResource("Environment_fc0e3")
-
-[connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
-[connection signal="pressed" from="CanvasLayer/Join" to="." method="_on_join_pressed"]
