@@ -10,6 +10,7 @@ func _on_name_text_submitted(new_text: String) -> void:
 
 
 func _on_host_pressed() -> void:
+	Server.player_info = {"name": playerName}
 	Server.create_game()
 	Server.load_game.rpc("game.tscn")
 	Server.player_loaded()
