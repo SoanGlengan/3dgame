@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://46uko6yjk7dq"
-path="res://.godot/imported/reticle.png-78faab41ab90ba7563de673d1ea50eec.ctex"
+path="res://godot/imported/reticle.png-78faab41ab90ba7563de673d1ea50eec.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://simple_gun/reticle.png"
-dest_files=["res://.godot/imported/reticle.png-78faab41ab90ba7563de673d1ea50eec.ctex"]
+dest_files=["res://godot/imported/reticle.png-78faab41ab90ba7563de673d1ea50eec.ctex"]
 
 [params]
 

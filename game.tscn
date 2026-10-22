@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://uerkgwaxa1ei"]
 
+[ext_resource type="Script" uid="uid://m75rq42drvdj" path="res://game.gd" id="1_80nbo"]
+
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_feb5d"]
 stencil_flags = 2
 stencil_outline_thickness = 0.053
@@ -32,6 +34,7 @@ sky = SubResource("Sky_glpr6")
 tonemap_mode = 2
 
 [node name="game" type="Node3D" unique_id=1551873215]
+script = ExtResource("1_80nbo")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=2101766571]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.007957, -0.045157433, -4.056304)

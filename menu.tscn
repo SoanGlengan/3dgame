@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://qskilreg5gxb"]
+
+[ext_resource type="Script" uid="uid://w46u3bwecx84" path="res://menu.gd" id="1_lti8b"]
+
+[node name="Menu" type="Control" unique_id=1174381535]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lti8b")
+
+[node name="Host" type="Button" parent="." unique_id=2142996153]
+layout_mode = 0
+offset_left = 441.0
+offset_top = 302.0
+offset_right = 511.0
+offset_bottom = 343.0
+size_flags_horizontal = 8
+text = "Host"
+
+[node name="Join" type="Button" parent="." unique_id=293865952]
+layout_mode = 0
+offset_left = 684.0
+offset_top = 308.0
+offset_right = 755.0
+offset_bottom = 352.0
+text = "Join"
+
+[node name="Port" type="LineEdit" parent="." unique_id=1587671296]
+visible = false
+layout_mode = 0
+offset_left = 474.0
+offset_top = 396.0
+offset_right = 713.0
+offset_bottom = 427.0
+
+[node name="PortLabel" type="Label" parent="." unique_id=562442373]
+visible = false
+layout_mode = 0
+offset_left = 567.0
+offset_top = 368.0
+offset_right = 607.0
+offset_bottom = 391.0
+text = "Port:"
+
+[node name="Name" type="LineEdit" parent="." unique_id=1162322552]
+layout_mode = 0
+offset_left = 474.0
+offset_top = 464.0
+offset_right = 713.0
+offset_bottom = 495.0
+
+[node name="NameLabel" type="Label" parent="." unique_id=855811592]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 440.0
+offset_right = 611.0
+offset_bottom = 463.0
+text = "Name:"
+
+[connection signal="pressed" from="Host" to="." method="_on_host_pressed"]
+[connection signal="text_submitted" from="Name" to="." method="_on_name_text_submitted"]

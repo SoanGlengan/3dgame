@@ -52,8 +52,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ycvb1")
 
-[sub_resource type="LabelSettings" id="LabelSettings_e2o6t"]
-
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_wa5vi"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
@@ -118,7 +116,6 @@ scale_max = 1.5
 size = Vector3(0.1, 0.1, 0.1)
 
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=942182750]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.937556, 0)
 collision_layer = 7
 script = ExtResource("1_glpr6")
 
@@ -157,23 +154,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="Name" type="LineEdit" parent="Camera3D/UserInterface" unique_id=1705939650]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 44.0
-offset_right = 251.0
-offset_bottom = 75.0
-
-[node name="NameLabel" type="Label" parent="Camera3D/UserInterface" unique_id=773571269]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_left = 100.0
-offset_top = 12.0
-offset_right = 151.0
-offset_bottom = 35.0
-text = "Name:"
-label_settings = SubResource("LabelSettings_e2o6t")
-
 [node name="reticle" type="CenterContainer" parent="Camera3D/UserInterface" unique_id=966652964]
 layout_mode = 1
 anchors_preset = 8
@@ -199,44 +179,6 @@ offset_top = 605.0
 offset_right = 521.0
 offset_bottom = 632.0
 show_percentage = false
-
-[node name="Control" type="Control" parent="Camera3D" unique_id=259802025]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Host" type="Button" parent="Camera3D/Control" unique_id=174359047]
-layout_mode = 0
-offset_left = 441.0
-offset_top = 302.0
-offset_right = 511.0
-offset_bottom = 343.0
-size_flags_horizontal = 8
-text = "Host"
-
-[node name="Join" type="Button" parent="Camera3D/Control" unique_id=1512056780]
-layout_mode = 0
-offset_left = 684.0
-offset_top = 308.0
-offset_right = 755.0
-offset_bottom = 352.0
-text = "Join"
-
-[node name="Port" type="LineEdit" parent="Camera3D/Control" unique_id=921950013]
-layout_mode = 0
-offset_left = 474.0
-offset_top = 396.0
-offset_right = 713.0
-offset_bottom = 427.0
-
-[node name="PortLabel" type="Label" parent="Camera3D/Control" unique_id=294598469]
-layout_mode = 0
-offset_left = 567.0
-offset_top = 368.0
-offset_right = 607.0
-offset_bottom = 391.0
-text = "Port:"
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1359776660]
 replication_config = SubResource("SceneReplicationConfig_wa5vi")

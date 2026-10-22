@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cobqooy4bdu4q"
-path="res://.godot/imported/projectile_model.glb-933382631ebf62b5693c7cdeed765a54.scn"
+path="res://godot/imported/projectile_model.glb-933382631ebf62b5693c7cdeed765a54.scn"
 
 [deps]
 
 source_file="res://simple_gun/player/projectile/projectile_model.glb"
-dest_files=["res://.godot/imported/projectile_model.glb-933382631ebf62b5693c7cdeed765a54.scn"]
+dest_files=["res://godot/imported/projectile_model.glb-933382631ebf62b5693c7cdeed765a54.scn"]
 
 [params]
 
